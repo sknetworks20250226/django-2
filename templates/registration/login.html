@@ -8,6 +8,7 @@
 <body>
     <form method="post" action="{% url 'login' %}">
         {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}">
         <h2>Login</h2>
         <div>
             <label for="username">Username:</label>
