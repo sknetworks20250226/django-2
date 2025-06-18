@@ -16,8 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-
-urlpatterns = [    
+from django.contrib.auth import views as auth_views
+from myapp.views import main_view
+urlpatterns = [   
+    # localhost:8000/로 접근시 index.html로 이동
+    path('', main_view,name="home"),  # myapp의 urls.py를 포함
     path('admin/', admin.site.urls),
+    # 로그인 로그아웃 url        
+    path('login/', auth_views.LoginView.as_view(), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('posts/', include('myapp.urls')),
 ]

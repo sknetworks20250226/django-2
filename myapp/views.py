@@ -6,6 +6,11 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 def is_in_group(user):
     return user.groups.filter(name='admin').exists()
 
+
+def main_view(request):
+    # 메인 페이지 로직
+    return render(request, 'myapp/index.html')
+
 @login_required
 @user_passes_test(is_in_group)
 def admin_view(request):

@@ -121,6 +121,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+# Static files (CSS, JavaScript, Images) 디렉토리 설정
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',  # 프로젝트 내 static 디렉토리
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -128,8 +132,8 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # 로그인 후 리다이렉트 URL 설정
-# LOGIN_REDIRECT_URL = '/posts/'  # 로그인 후 이동할 URL
+LOGIN_REDIRECT_URL = '/posts/'  # 로그인 후 이동할 URL
 # 로그아웃 후 리다이렉트 URL 설정
-LOGOUT_REDIRECT_URL = '/posts/login'  # 로그아웃 후 이동할 URL
+LOGOUT_REDIRECT_URL = '/login'  # 로그아웃 후 이동할 URL
 # 로그인 URL 설정
 LOGIN_URL = '/posts/login/'  # 로그인 페이지 URL
