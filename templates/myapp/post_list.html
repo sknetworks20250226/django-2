@@ -15,9 +15,12 @@
             <li>No posts available.</li>
         {% endfor %}
         {% if user.is_authenticated %}
-            {% if user.groups.filter(name='admin').exists %}
-                <li><a href="{% url 'admin_view' %}">Create New Post</a></li>
-            {% endif %}
+        <!-- admin 그룹권한 확인 -->
+            {% for group in user.groups.all %}
+                {% if group.name == 'admin' %}
+                    <li><a href="{% url 'admin_view' %}">Create New Post</a></li>
+                {% endif %}
+            {% endfor %}
         <li><a href="{% url 'user_view' %}">User Page</a></li>
         <li>
             <form method="post" action="{% url 'logout' %}">
