@@ -12,6 +12,12 @@ def admin_view(request):
     # 관리자 전용 뷰 로직
     return render(request, 'myapp/admin.html')
 
+
+@login_required
+def user_view(request):
+    # 일반 사용자 전용 뷰 로직
+    return render(request, 'myapp/user.html')
+
 # Create your views here.
 def post_list(request):
     posts = Post.objects.all()
