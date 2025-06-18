@@ -15,7 +15,10 @@
             <li>No posts available.</li>
         {% endfor %}
         {% if user.is_authenticated %}
-        <li><a href="{% url 'admin_view' %}">Create New Post</a></li>
+            {% if user.groups.filter(name='admin').exists %}
+                <li><a href="{% url 'admin_view' %}">Create New Post</a></li>
+            {% endif %}
+        <li><a href="{% url 'user_view' %}">User Page</a></li>
         <li>
             <form method="post" action="{% url 'logout' %}">
                 {% csrf_token %}
